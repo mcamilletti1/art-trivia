@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="script.js"></script>
+    <title>Art Trivia</title>
+</head>
+<body>
+    <div id="content">
+    <h1>Guess the Artist</h1>
+    <h2>Can you guess the artist for each of these famous works of art?</h2>
+    <br>
+    <h4> </h4>
+    <div id="artImage"> </div>
+    <br>
+    <div id="choices">
+        <div class="choice" id="A" onclick="checkAnswer('A')">Answer A</div>
+        <br>
+        <div class="choice" id="B" onclick="checkAnswer('B')">Answer B</div>
+        <br>
+        <div class="choice" id="C" onclick="checkAnswer('C')">Answer C</div>
+        <br>
+        <div class="choice" id="D" onclick="checkAnswer('D')">Answer D</div>
+    </div>
+    <br>
+    <div id="playerChoice"></div>
+    <button>Submit</button>
+    </div>
+    <div id="scoreContainer" style="display: none"></div>
+</body>
+</html>

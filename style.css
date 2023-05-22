@@ -1,0 +1,57 @@
+.choice:hover {
+    cursor: pointer;
+}
+
+#A:hover {
+    background-color: rgb(181, 232, 253);
+}
+
+#B:hover {
+    background-color: lightyellow;
+}
+
+#C:hover {
+    background-color: peachpuff;
+}
+
+#D:hover {
+    background-color: rgb(213, 248, 236);
+}
+
+
+.choice {
+    border: solid 2px navy;
+    width: 400px;
+    display: flex;
+    align-items: center;
+
+}
+
+body {
+    width: 1000px;
+    background-image: url("https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    border: solid 2px black;
+    text-align: center;
+}
+
+
+#content {
+    background-color: rgb(247, 212, 217);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.6;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+

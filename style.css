@@ -20,11 +20,12 @@
 
 
 .choice {
-    border: solid 2px navy;
+    border: solid 2px black;
     width: 400px;
     display: flex;
     align-items: center;
-
+    border-radius: 10%
+    padding: 5px 0 5px 0;
 }
 
 body {
@@ -48,10 +49,25 @@ body {
 
 h1 {
     font-size: 45px;
+    opacity: 1;
 }
 
 h2 {
     font-size: 28px;
+    opacity: 1;
 }
 
 
+#artImage {
+    opacity: 1
+}
+
+button {
+   opacity: 1;
+   border: solid 1px black;
+   background-color: white; 
+   color: black;
+   border-radius: 10%;
+   padding: 2px;
+   margin-bottom: 30px;
+}

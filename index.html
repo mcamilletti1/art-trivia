@@ -5,30 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+    </style>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="script.js"></script>
     <title>Art Trivia</title>
+    <style>
+        img.backgroundImg {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: blur(10px); /* Safari 6.0 - 9.0 */
+        filter: blur(10px);
+        }
+      </style>
 </head>
 <body>
-    <div id="content">
-    <h1>Guess the Artist</h1>
-    <h2>Can you guess the artist for each of these famous works of art?</h2>
-    <br>
-    <h4> </h4>
-    <div id="artImage"> </div>
-    <br>
-    <div id="choices">
-        <div class="choice" id="A" onclick="checkAnswer('A')">Answer A</div>
-        <br>
-        <div class="choice" id="B" onclick="checkAnswer('B')">Answer B</div>
-        <br>
-        <div class="choice" id="C" onclick="checkAnswer('C')">Answer C</div>
-        <br>
-        <div class="choice" id="D" onclick="checkAnswer('D')">Answer D</div>
+    <div class="background"><img class="backgroundImg" src="https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg"/></div>
+    <div id="outerContent">
+    <div id="background"></div>
+    <div id="oval">
+    <div id="content"></div>
+    <div id="contentContent">
+        <h1>Guess the Artist</h1>
+        <h2>Can you guess the artist for each of these famous works of art?</h2>
+        <h4> </h4>
+        <div id="artImage"> </div>
+        <div id="choices">
+            <div class="choice" id="A" onclick="checkAnswer('A')">Answer A</div>
+            <div class="choice" id="B" onclick="checkAnswer('B')">Answer B</div>
+            <div class="choice" id="C" onclick="checkAnswer('C')">Answer C</div>
+            <div class="choice" id="D" onclick="checkAnswer('D')">Answer D</div>
+        </div>
+        <div id="playerChoice"></div>
+        <button>Next Question</button>
     </div>
-    <br>
-    <div id="playerChoice"></div>
-    <button>Check answer</button>
+    </div>
     </div>
     <div id="scoreContainer" style="display: none"></div>
 </body>

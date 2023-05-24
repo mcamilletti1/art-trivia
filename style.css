@@ -18,43 +18,126 @@
     background-color: rgb(213, 248, 236);
 }
 
+#A, #B, #C, #D {
+    padding: 2px 0 2px 2px;
+    border-radius: 1px;
+}
+
+h4 {
+    font-size: 15px;
+    font-family: 'Alice', serif;
+}
+
 
 .choice {
     border: solid 2px black;
-    width: 400px;
+    width: 250px;
     display: flex;
     align-items: center;
-    border-radius: 10%
+    border-radius: 1px;
     padding: 5px 0 5px 0;
+    margin: 5px 0 5px 0;
 }
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#playerChoice {
+    font-size: 15px;
+    font-family: 'Alice', serif;
+    margin: 5px 0 5px 0;
+}
+
 
 body {
-    width: 1000px;
-    background-image: url("https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0 auto;
-    border: solid 2px black;
-    text-align: center;
+    font-family: 'Alice', serif;
 }
 
+#outerContent {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    z-index: 2;
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    border: solid 10px rgb(93, 72, 20);
+    border-radius: 1px;
+}
 
-#content {
-    background-color: rgb(247, 212, 217);
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg");
+    filter: blur(2px);
+    z-index: 3;
+    opacity: 0.6;
+    filter: saturate(200%);
+}
+
+#oval {
+    position: relative;
+    background-size: cover;
+    z-index: 5;
     display: flex;
     align-items: center;
     flex-direction: column;
-    opacity: 0.6;
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+#content {
+    background-color: rgb(221, 213, 217);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.55;
+    z-index: 4;
+}
+
+#contentContent {
+    position: absolute;
+    opacity: 1;
+    z-index: 6;
+}
+
+
+
+h1, h2 {
+    background-color: whitesmoke;
+    border: solid 2px rgb(93, 72, 20);
+    margin: 0 auto;
+    border-radius: 1px;
 }
 
 h1 {
-    font-size: 45px;
+    font-size: 35px;
     opacity: 1;
+    width: 500px;
+    border-bottom: whitesmoke;
+    padding: 20px;
+    margin-top: 2px;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 25px;
     opacity: 1;
+    padding: 20px;
+    border-top: none;
+    width: 800px;
 }
 
 
@@ -64,10 +147,20 @@ h2 {
 
 button {
    opacity: 1;
-   border: solid 1px black;
-   background-color: white; 
+   border: solid 2px rgb(93, 72, 20);
+   background-color: whitesmoke; 
    color: black;
-   border-radius: 10%;
    padding: 2px;
-   margin-bottom: 30px;
+   width: 150px;
+   height: 30px;
+   font-size: 15px;
+   font-family: 'Alice', serif;
+   border-radius: 1px;
 }
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(164, 207, 246);
+}
+
+

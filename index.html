@@ -23,6 +23,26 @@
         filter: blur(10px);
         }
       </style>
+      <script type="text/javascript">
+        function init() {
+            points = 0
+            rounds = 0
+            choices.style.visibility = "hidden"
+            button.innerText = "Start quiz"
+            img.innerHTML = `<img class="backgroundImg" src="https://img.theculturetrip.com/wp-content/uploads/2016/08/tct-aic-2.png"/>`
+            randomArt.style.visibility = "hidden"
+            randomArt.style.height = "1px"
+            randomArt.style.width = "1px"
+            background.style.backgroundImage = "url(https://img.theculturetrip.com/wp-content/uploads/2016/08/tct-aic-2.png)"
+            button.addEventListener('click', renderGame)
+            h1.innerText = "Guess the Artist"
+            h2.innerText = "Can you guess the artist for each of these works of art?"
+            content.style.opacity = 0.55
+            oval.style.paddingTop = "100px"
+            oval.style.height = "600px"
+        }
+        window.onload = init;
+        </script>
 </head>
 <body>
     <div class="background"><img class="backgroundImg" src="https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg"/></div>
@@ -34,12 +54,12 @@
         <h1>Guess the Artist</h1>
         <h2>Can you guess the artist for each of these famous works of art?</h2>
         <h4> </h4>
-        <div id="artImage"> </div>
+        <div id="artImage"><img src="https://cdn.booooooom.com/wp-content/uploads/2017/03/colin-macfadyen19.gif" max-width="300px"/></div>
         <div id="choices">
-            <div class="choice" id="A" onclick="checkAnswer('A')">Answer A</div>
-            <div class="choice" id="B" onclick="checkAnswer('B')">Answer B</div>
-            <div class="choice" id="C" onclick="checkAnswer('C')">Answer C</div>
-            <div class="choice" id="D" onclick="checkAnswer('D')">Answer D</div>
+            <div class="choice" id="A">Answer A</div>
+            <div class="choice" id="B">Answer B</div>
+            <div class="choice" id="C">Answer C</div>
+            <div class="choice" id="D">Answer D</div>
         </div>
         <div id="playerChoice"></div>
         <button>Next Question</button>

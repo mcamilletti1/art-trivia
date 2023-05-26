@@ -20,13 +20,8 @@ let points = 0
 let rounds = 0
 
 
-function sanitise(x) {
-    if(isNaN(x)) {
-        return NaN
-    }
-    return x
-}
 
+//brings you to the score page
 function returnScore (num) {
     let percentCorrect = (num/5)*100
     h1.innerText = "Great job!"
@@ -50,7 +45,7 @@ function returnScore (num) {
 
 
 
-
+//starts the title page on load
 function init () {
     points = 0
     rounds = 0
@@ -79,7 +74,7 @@ function loadingGif() {
 }
 
 
-
+//loads the gameplay page
 async function renderGame () {
     loadingGif()
     pointsAvailable = 1
@@ -106,11 +101,14 @@ async function renderGame () {
     h1.style.border = "none"
     h2.style.border = "none"
     button.innerText = "Next question"
+
+    //gets random page of paintings
+
     let randomPage = Math.floor(Math.random() * 100)
     let artWork = await axios.get(`https://api.artic.edu/api/v1/artworks/search?&query[match][artwork_type_title]=Painting&page=${randomPage}`)
     
 
-
+    //gets id for individual paintings from that page
     let artWorkData = artWork.data.data
     let randomArtwork = artWorkData[Math.floor(Math.random()*5)]
     let randomTitle = randomArtwork.title
@@ -119,12 +117,14 @@ async function renderGame () {
     let randomArtwork2Id = artWorkData[7].id
     let randomArtwork3Id = artWorkData[8].id
 
+
+    //gets data for paintings chosen
     let individualArt = await axios.get(`https://api.artic.edu/api/v1/artworks/${randomArtworkId}`)
     let individualArt1 = await axios.get(`https://api.artic.edu/api/v1/artworks/${randomArtwork1Id}`)
     let individualArt2 = await axios.get(`https://api.artic.edu/api/v1/artworks/${randomArtwork2Id}`)
     let individualArt3 = await axios.get(`https://api.artic.edu/api/v1/artworks/${randomArtwork3Id}`)
 
-
+    //gets names of artists for each painting and image for painting
     let randomArtistName = individualArt.data.data.artist_title
     console.log(`correct answer: ${randomArtistName}`)
     let randomImageId = individualArt.data.data.image_id
@@ -135,16 +135,19 @@ async function renderGame () {
 
 
 
-
+    //gets image from image database
    let response = `https://www.artic.edu/iiif/2/${randomImageId}/full/300,300/0/default.jpg`
 
+
+   //sets painting title and background image to the painting
    randomArt.innerHTML = `<img src="${response}"/>`
    img.innerHTML = `<img class="backgroundImg" src="${response}"/>`
 
+   //gets all API promises
    let apiList = [individualArt, individualArt1, individualArt2, individualArt3, response]
    Promise.all(apiList)
 
-
+    //randomizes the multiple choice buttons
    let multipleChoice = [randomArtistName, randomArtistName1, randomArtistName2, randomArtistName3]
    let rndmIdx = Math.floor(Math.random()*multipleChoice.length)
    let firstChoice = multipleChoice[rndmIdx]
@@ -160,6 +163,7 @@ async function renderGame () {
    let multipleChoice3 = multipleChoiceClone3.splice(rndmIdx2, 1)
    let rndmIdx3 = Math.floor(Math.random()*multipleChoiceClone3.length)
    let fourthChoice = multipleChoiceClone3[rndmIdx3]
+
    title.innerText = `"${randomTitle}"`
    title.style.opacity = "1"
    choiceA.innerText = `${firstChoice}`
@@ -167,6 +171,8 @@ async function renderGame () {
    choiceC.innerText = `${thirdChoice}`
    choiceD.innerText = `${fourthChoice}`
 
+
+//checks the right answer
 let rightAnswer = false
 
 function choice1 () {
@@ -212,6 +218,7 @@ function choice4 () {
     }
 }
 
+//gives a point if answer is correct and displays the right answer
 
 function checkAnswer () {
     console.log("checking answer")
@@ -228,7 +235,7 @@ function checkAnswer () {
     }
 }
 
-
+//listens for which answer the player chooses
 
 choiceA.addEventListener('click', () => {
     choice1()
@@ -244,7 +251,7 @@ choiceD.addEventListener('click', () => {
     choice4()
     checkAnswer()}, {once: true})
 
-
+    //checks to see if the game is complete
     rounds++
     if (rounds === 6) {
         returnScore(points)

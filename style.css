@@ -121,7 +121,9 @@ body {
 h1, h2 {
     background-color: whitesmoke;
     border: solid 2px rgb(93, 72, 20);
-    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
     border-radius: 1px;
 }
 
@@ -133,6 +135,8 @@ h1 {
     border-bottom: whitesmoke;
     padding: 20px;
     margin-top: 2px;
+    margin-bottom: 0;
+    margin-left: 50px;
 }
 
 h2 {
@@ -141,6 +145,7 @@ h2 {
     padding: 20px;
     border-top: none;
     width: 100%;
+    margin-top: 0;
     max-width: 400px;
 }
 

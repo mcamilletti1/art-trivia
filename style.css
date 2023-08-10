@@ -184,6 +184,7 @@ button:hover {
 @media screen and (max-width: 450px) {
     h1 {
         width: 200px;
+        padding-right: 10px;
     }
 
     h2 {

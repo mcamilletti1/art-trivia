@@ -70,7 +70,7 @@ body {
     margin: 0 auto;
     border: solid 10px rgb(93, 72, 20);
     border-radius: 1px;
-    height: 700px;
+    height: 800px;
 }
 
 #background {
@@ -84,7 +84,7 @@ body {
     z-index: 3;
     opacity: 0.6;
     filter: saturate(200%);
-    height: 700px;
+    height: 800px;
 }
 
 #oval {
@@ -99,7 +99,7 @@ body {
     height: 600px;
     margin: 0 auto;
     padding-top: 100px;
-    height: 700px;
+    height: 800px;
 }
 
 #content {
@@ -111,7 +111,7 @@ body {
     bottom: 0;
     opacity: 0.55;
     z-index: 4;
-    height: 700px;
+    height: 800px;
 }
 
 #contentContent {

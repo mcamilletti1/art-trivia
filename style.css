@@ -175,4 +175,14 @@ button:hover {
     background-color: rgb(164, 207, 246);
 }
 
+@media screen and (max-width: 450px) {
+    h1 {
+        width: 150px;
+    }
+
+    h2 {
+        width: 80px;
+    }
+}
+
 

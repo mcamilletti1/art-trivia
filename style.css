@@ -129,7 +129,7 @@ h1 {
     font-size: 35px;
     opacity: 1;
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     border-bottom: whitesmoke;
     padding: 20px;
     margin-top: 2px;
@@ -141,7 +141,7 @@ h2 {
     padding: 20px;
     border-top: none;
     width: 100%;
-    max-width: 800px;
+    max-width: 400px;
 }
 
 

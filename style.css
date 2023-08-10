@@ -64,7 +64,8 @@ body {
     background-size: cover;
     text-align: center;
     z-index: 2;
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     height: 700px;
     margin: 0 auto;
     border: solid 10px rgb(93, 72, 20);
@@ -91,7 +92,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     height: 600px;
     margin: 0 auto;
     padding-top: 100px;
@@ -126,7 +128,8 @@ h1, h2 {
 h1 {
     font-size: 35px;
     opacity: 1;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     border-bottom: whitesmoke;
     padding: 20px;
     margin-top: 2px;
@@ -137,14 +140,15 @@ h2 {
     opacity: 1;
     padding: 20px;
     border-top: none;
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
 }
 
 
 #artImage {
-    opacity: 1
-    height: 300px;
-    width: 300px;
+    opacity: 1;
+    height: auto;
+    width: 100%;
 }
 
 button {
@@ -153,7 +157,8 @@ button {
    background-color: whitesmoke; 
    color: black;
    padding: 2px;
-   width: 150px;
+   width: 100%;
+   max-width: 150px;
    height: 30px;
    font-size: 15px;
    font-family: 'Alice', serif;

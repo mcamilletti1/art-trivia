@@ -18,6 +18,13 @@ const outerContent = document.getElementById("outerContent")
 const img = document.querySelector(".background")
 let points = 0
 let rounds = 0
+let apiList = []
+let apiProcessed = false
+let individualArt
+let individualArt1
+let individualArt2
+let individualArt3
+
 
 
 
@@ -33,7 +40,7 @@ function returnScore (num) {
     randomArt.style.height = "1px"
     randomArt.style.width = "1px"
     background.style.backgroundImage = "url(https://img.theculturetrip.com/wp-content/uploads/2016/08/tct-aic-2.png)"
-    button.addEventListener('click', renderGame)
+    button.addEventListener('click', restartGame)
     content.style.opacity = 0.55
     oval.style.paddingTop = "100px"
     oval.style.height = "600px"
@@ -41,8 +48,12 @@ function returnScore (num) {
     outerContent.style.border = "solid 10px rgb(93, 72, 20)"
     points = 0
     rounds = 0
+    rightAnswer = false
 }
 
+function restartGame() {
+    location.reload()
+}
 
 
 //starts the title page on load
@@ -62,6 +73,7 @@ function init () {
     content.style.opacity = 0.55
     oval.style.paddingTop = "100px"
     oval.style.height = "600px"
+    addEventListeners()
 }
 
 
@@ -73,11 +85,18 @@ function loadingGif() {
     randomArt.style.margin = "0 auto"
 }
 
+async function processApiResponses() {
+    apiList = [individualArt, individualArt1, individualArt2, individualArt3]
+    await Promise.all(apiList)
+    apiProcessed = true
+}
 
 //loads the gameplay page
 async function renderGame () {
+    await processApiResponses()
     loadingGif()
     pointsAvailable = 1
+    rightAnswer = false
     h1.innerText = "Guess the Artist"
     h2.innerText = "Can you guess the artist for each of these works of art?"
     choices.style.visibility = "visible"
@@ -172,16 +191,12 @@ async function renderGame () {
    choiceD.innerText = `${fourthChoice}`
 
 
-//checks the right answer
-let rightAnswer = false
 
 function choice1 () {
     console.log(`running choice1 ${firstChoice} ${randomArtistName}`)
     choiceA.style.backgroundColor = "rgb(213, 248, 236)"
     if (firstChoice === randomArtistName) {
         rightAnswer = true;
-    } else {
-        rightAnswer = false;
     }
 }
 
@@ -190,9 +205,7 @@ function choice2 () {
     choiceB.style.backgroundColor = "rgb(213, 248, 236)"
     if (secondChoice === randomArtistName) {
         rightAnswer = true;
-    } else {
-        rightAnswer = false;
-    }
+    } 
 }
 
 
@@ -201,9 +214,7 @@ function choice3 () {
     choiceC.style.backgroundColor = "rgb(213, 248, 236)"
     if (thirdChoice === randomArtistName) {
         rightAnswer = true;
-    } else {
-        rightAnswer = false;
-    }
+    } 
 }
 
 
@@ -213,9 +224,7 @@ function choice4 () {
     choiceD.style.backgroundColor = "rgb(213, 248, 236)"
     if (fourthChoice === randomArtistName) {
         rightAnswer = true;
-    } else {
-        rightAnswer = false;
-    }
+    } 
 }
 
 //gives a point if answer is correct and displays the right answer
@@ -232,34 +241,52 @@ function checkAnswer () {
         }
     } else {
         playerChoice.innerText = `Incorrect. The correct answer is ${randomArtistName}`;
-    }
+    } 
 }
 
 //listens for which answer the player chooses
 
 choiceA.addEventListener('click', () => {
     choice1()
-    checkAnswer()}, {once: true})
+    checkAnswer()
+    removeEventListeners()
+})
     
 choiceB.addEventListener('click', () => {
     choice2()
-    checkAnswer()}, {once: true})
+    checkAnswer()
+    removeEventListeners()
+})
 choiceC.addEventListener('click', () => {
     choice3()
-    checkAnswer()}, {once: true})
+    checkAnswer()
+    removeEventListeners()
+})
 choiceD.addEventListener('click', () => {
     choice4()
-    checkAnswer()}, {once: true})
+    checkAnswer()
+    removeEventListeners()
+})
+
+function removeEventListeners() {
+    choiceA.removeEventListener('click', choice1)
+    choiceB.removeEventListener('click', choice2);
+    choiceC.removeEventListener('click', choice3);
+    choiceD.removeEventListener('click', choice4);
+}
 
     //checks to see if the game is complete
     rounds++
     if (rounds === 6) {
         returnScore(points)
+    } else {
+        pointsAvailable = 1
+        console.log(`rounds: ${rounds}`)
+        console.log(`points: ${points}`)
     }
-    console.log(`rounds: ${rounds}`)
-    console.log(`points: ${points}`)
 
 }
+
 
 
 

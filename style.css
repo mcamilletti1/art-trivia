@@ -177,11 +177,11 @@ button:hover {
 
 @media screen and (max-width: 450px) {
     h1 {
-        width: 150px;
+        width: 250px;
     }
 
     h2 {
-        width: 80px;
+        width: 150px;
     }
 }
 

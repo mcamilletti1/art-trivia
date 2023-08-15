@@ -55,7 +55,7 @@ function restartGame() {
     location.reload()
 }
 
-
+document.addEventListener("DOMContentLoaded", function() {
 //starts the title page on load
 function init () {
     points = 0
@@ -75,6 +75,8 @@ function init () {
     oval.style.height = "600px"
     addEventListeners()
 }
+
+})
 
 
 function loadingGif() {

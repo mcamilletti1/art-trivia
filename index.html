@@ -5,36 +5,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+    </style>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="script.js"></script>
     <title>Art Trivia</title>
+    <style>
+        img.backgroundImg {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: blur(10px); /* Safari 6.0 - 9.0 */
+        filter: blur(10px);
+        }
+      </style>
+      <script type="text/javascript">
+        function init() {
+            points = 0
+            rounds = 0
+            choices.style.visibility = "hidden"
+            button.innerText = "Start quiz"
+            img.innerHTML = `<img class="backgroundImg" src="https://img.theculturetrip.com/wp-content/uploads/2016/08/tct-aic-2.png"/>`
+            randomArt.style.visibility = "hidden"
+            randomArt.style.height = "1px"
+            randomArt.style.width = "1px"
+            background.style.backgroundImage = "url(https://img.theculturetrip.com/wp-content/uploads/2016/08/tct-aic-2.png)"
+            button.addEventListener('click', renderGame)
+            h1.innerText = "Guess the Artist"
+            h2.innerText = "Can you guess the artist for each of these works of art?"
+            content.style.opacity = 0.55
+            oval.style.paddingTop = "100px"
+            oval.style.height = "600px"
+        }
+        window.onload = init;
+        </script>
 </head>
 <body>
-    <div class="background">
-        <img class="backgroundImg" src="https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg"/>
-    </div>
+    <div class="background"><img class="backgroundImg" src="https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg"/></div>
     <div id="outerContent">
-        <div id="background"></div>
-        <div id="oval">
-            <div id="content"></div>
-            <div id="contentContent">
-                <h1>Guess the Artist</h1>
-                <h2>Can you guess the artist for each of these famous works of art?</h2>
-                <h4> </h4>
-                <div id="artImage">
-                    <img src="https://cdn.booooooom.com/wp-content/uploads/2017/03/colin-macfadyen19.gif" max-width="300px"/>
-                </div>
-                <div id="choices">
-                    <div class="choice" id="A">Answer A</div>
-                    <div class="choice" id="B">Answer B</div>
-                    <div class="choice" id="C">Answer C</div>
-                    <div class="choice" id="D">Answer D</div>
-                </div>
-                <div id="playerChoice"></div>
-                <button>Next Question</button>
-            </div>
+    <div id="background"></div>
+    <div id="oval">
+    <div id="content"></div>
+    <div id="contentContent">
+        <h1>Guess the Artist</h1>
+        <h2>Can you guess the artist for each of these famous works of art?</h2>
+        <h4> </h4>
+        <div id="artImage"><img src="https://cdn.booooooom.com/wp-content/uploads/2017/03/colin-macfadyen19.gif" max-width="300px"/></div>
+        <div id="choices">
+            <div class="choice" id="A">Answer A</div>
+            <div class="choice" id="B">Answer B</div>
+            <div class="choice" id="C">Answer C</div>
+            <div class="choice" id="D">Answer D</div>
         </div>
+        <div id="playerChoice"></div>
+        <button>Next Question</button>
+    </div>
+    </div>
     </div>
     <div id="scoreContainer" style="display: none"></div>
 </body>

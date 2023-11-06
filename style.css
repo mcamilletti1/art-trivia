@@ -79,7 +79,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg");
+    /*background-image: url("https://img.freepik.com/free-photo/abstract-oil-paint-textured-background_53876-163057.jpg");*/
     filter: blur(2px);
     z-index: 3;
     opacity: 0.6;

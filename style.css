@@ -138,13 +138,11 @@ h1, h2 {
 h1 {
     font-size: 35px;
     opacity: 1;
-    width: 100%;
     max-width: 350px;
     border-bottom: whitesmoke;
     padding: 20px;
     margin: 0 auto;
     text-align: center;
-    padding-right: 0 !important;
 }
 
 h2 {

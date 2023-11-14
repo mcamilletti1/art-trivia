@@ -116,7 +116,6 @@ async function renderGame () {
     oval.style.paddingTop = "0"
     oval.style.height = "700px"
     h2.style.padding = "0"
-    h1.style.padding = "0"
     content.style.backgroundColor = "whitesmoke"
     content.style.opacity = 1
     outerContent.style.border = "solid 2px black"

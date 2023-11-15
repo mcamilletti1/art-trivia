@@ -25,7 +25,13 @@ let individualArt1
 let individualArt2
 let individualArt3
 
-
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 
 //brings you to the score page
@@ -77,7 +83,6 @@ function init () {
 }
 
 })
-
 
 function loadingGif() {
     img.innerHTML = `<img class="backgroundImg" src="https://cdn.booooooom.com/wp-content/uploads/2017/03/colin-macfadyen19.gif"/>`
@@ -153,131 +158,105 @@ async function renderGame () {
     let randomArtistName2 = individualArt2.data.data.artist_title
     let randomArtistName3 = individualArt3.data.data.artist_title
 
+    let artistNames = [randomArtistName, randomArtistName1, randomArtistName2, randomArtistName3];
 
+    // Remove duplicates
+    let uniqueArtistNames = [...new Set(artistNames)];
+
+    // Shuffle the unique artist names
+    let shuffledArtistNames = shuffleArray(uniqueArtistNames);
 
 
     //gets image from image database
-   let response = `https://www.artic.edu/iiif/2/${randomImageId}/full/300,300/0/default.jpg`
+    let response = `https://www.artic.edu/iiif/2/${randomImageId}/full/300,300/0/default.jpg`
 
 
    //sets painting title and background image to the painting
-   randomArt.innerHTML = `<img src="${response}"/>`
-   img.innerHTML = `<img class="backgroundImg" src="${response}"/>`
+    randomArt.innerHTML = `<img src="${response}"/>`
+    img.innerHTML = `<img class="backgroundImg" src="${response}"/>`
 
-   //gets all API promises
-   let apiList = [individualArt, individualArt1, individualArt2, individualArt3, response]
-   Promise.all(apiList)
 
-    //randomizes the multiple choice buttons
-   let multipleChoice = [randomArtistName, randomArtistName1, randomArtistName2, randomArtistName3]
-   let rndmIdx = Math.floor(Math.random()*multipleChoice.length)
-   let firstChoice = multipleChoice[rndmIdx]
-   let multipleChoiceClone1 = multipleChoice.slice(0)
-   let multipleChoice1 = multipleChoiceClone1.splice(rndmIdx, 1)
-   let rndmIdx1 = Math.floor(Math.random()*multipleChoiceClone1.length)
-   let secondChoice = multipleChoiceClone1[rndmIdx1]
-   let multipleChoiceClone2 = multipleChoiceClone1.slice(0)
-   let multipleChoice2 = multipleChoiceClone2.splice(rndmIdx1, 1)
-   let rndmIdx2 = Math.floor(Math.random()*multipleChoiceClone2.length)
-   let thirdChoice = multipleChoiceClone2[rndmIdx2]
-   let multipleChoiceClone3 = multipleChoiceClone2.slice(0)
-   let multipleChoice3 = multipleChoiceClone3.splice(rndmIdx2, 1)
-   let rndmIdx3 = Math.floor(Math.random()*multipleChoiceClone3.length)
-   let fourthChoice = multipleChoiceClone3[rndmIdx3]
-
-   title.innerText = `"${randomTitle}"`
-   title.style.opacity = "1"
-   choiceA.innerText = `${firstChoice}`
-   choiceB.innerText = `${secondChoice}`
-   choiceC.innerText = `${thirdChoice}`
-   choiceD.innerText = `${fourthChoice}`
+    title.innerText = `"${randomTitle}"`
+    title.style.opacity = "1"
+    choiceA.innerText = shuffledArtistNames[0]
+    choiceB.innerText = shuffledArtistNames[1]
+    choiceC.innerText = shuffledArtistNames[2]
+    choiceD.innerText = shuffledArtistNames[3]
 
 
 
-function choice1 () {
-    console.log(`running choice1 ${firstChoice} ${randomArtistName}`)
-    choiceA.style.backgroundColor = "rgb(213, 248, 236)"
-    if (firstChoice === randomArtistName) {
-        rightAnswer = true;
-    }
-}
-
-function choice2 () {
-    console.log(`running choice2 ${secondChoice} ${randomArtistName}`)
-    choiceB.style.backgroundColor = "rgb(213, 248, 236)"
-    if (secondChoice === randomArtistName) {
-        rightAnswer = true;
-    } 
-}
-
-
-function choice3 () {
-    console.log(`running choice3 ${thirdChoice} ${randomArtistName}`)
-    choiceC.style.backgroundColor = "rgb(213, 248, 236)"
-    if (thirdChoice === randomArtistName) {
-        rightAnswer = true;
-    } 
-}
-
-
-
-function choice4 () {
-    console.log(`running choice4 ${fourthChoice} ${randomArtistName}`)
-    choiceD.style.backgroundColor = "rgb(213, 248, 236)"
-    if (fourthChoice === randomArtistName) {
-        rightAnswer = true;
-    } 
-}
-
-//gives a point if answer is correct and displays the right answer
-
-function checkAnswer () {
-    console.log("checking answer")
-    playerChoice.style.opacity = "1"
-    if (rightAnswer === true) {
-        playerChoice.innerText = "That's correct!"
-        if (pointsAvailable === 1) {
-            points += 1;
-            console.log("adding one point");
-            pointsAvailable = 0
+    function choice1 () {
+        choiceA.style.backgroundColor = "rgb(213, 248, 236)"
+        if (shuffledArtistNames[0] === randomArtistName) {
+            rightAnswer = true;
         }
-    } else {
-        playerChoice.innerText = `Incorrect. The correct answer is ${randomArtistName}`;
-    } 
-}
+    }
 
-//listens for which answer the player chooses
+    function choice2 () {
+        choiceB.style.backgroundColor = "rgb(213, 248, 236)"
+        if (shuffledArtistNames[1] === randomArtistName) {
+            rightAnswer = true;
+        } 
+    }
 
-choiceA.addEventListener('click', () => {
-    choice1()
-    checkAnswer()
-    removeEventListeners()
-})
+    function choice3 () {
+        choiceC.style.backgroundColor = "rgb(213, 248, 236)"
+        if (shuffledArtistNames[2] === randomArtistName) {
+            rightAnswer = true;
+        } 
+    }
+
+    function choice4 () {
+        choiceD.style.backgroundColor = "rgb(213, 248, 236)"
+        if (shuffledArtistNames[3] === randomArtistName) {
+            rightAnswer = true;
+        } 
+    }
+
+    function checkAnswer () {
+        playerChoice.style.opacity = "1"
+        if (rightAnswer === true) {
+            playerChoice.innerText = "That's correct!"
+            if (pointsAvailable === 1) {
+                points += 1;
+                pointsAvailable = 0
+            }
+        } else {
+            playerChoice.innerText = `Incorrect. The correct answer is ${randomArtistName}`;
+        } 
+    }
+
+    choiceA.addEventListener('click', () => {
+        choice1()
+        checkAnswer()
+        removeEventListeners()
+    })
     
-choiceB.addEventListener('click', () => {
-    choice2()
-    checkAnswer()
-    removeEventListeners()
-})
-choiceC.addEventListener('click', () => {
-    choice3()
-    checkAnswer()
-    removeEventListeners()
-})
-choiceD.addEventListener('click', () => {
-    choice4()
-    checkAnswer()
-    removeEventListeners()
-})
+    choiceB.addEventListener('click', () => {
+        choice2()
+        checkAnswer()
+        removeEventListeners()
+    })
 
-function removeEventListeners() {
-    choiceA.removeEventListener('click', choice1)
-    choiceB.removeEventListener('click', choice2);
-    choiceC.removeEventListener('click', choice3);
-    choiceD.removeEventListener('click', choice4);
-}
+    choiceC.addEventListener('click', () => {
+        choice3()
+        checkAnswer()
+        removeEventListeners()
+    })
 
-    //checks to see if the game is complete
+    choiceD.addEventListener('click', () => {
+        choice4()
+        checkAnswer()
+        removeEventListeners()
+    })
+
+    function removeEventListeners() {
+        choiceA.removeEventListener('click', choice1)
+        choiceB.removeEventListener('click', choice2);
+        choiceC.removeEventListener('click', choice3);
+        choiceD.removeEventListener('click', choice4);
+    }
+
     rounds++
     if (rounds === 6) {
         returnScore(points)
@@ -286,8 +265,8 @@ function removeEventListeners() {
         console.log(`rounds: ${rounds}`)
         console.log(`points: ${points}`)
     }
-
 }
+
 
 
 

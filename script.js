@@ -24,6 +24,7 @@ let individualArt
 let individualArt1
 let individualArt2
 let individualArt3
+let pointsAvailable = 1
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -243,7 +244,6 @@ async function renderGame () {
         } else {
             playerChoice.innerText = `Incorrect. The correct answer is ${randomArtistName}`;
         } 
-        pointsAvailable = 0
         disableChoices()
     }
 
@@ -286,7 +286,6 @@ async function renderGame () {
         choiceB.removeEventListener('click', choice2);
         choiceC.removeEventListener('click', choice3);
         choiceD.removeEventListener('click', choice4);
-        enableChoices()
     }
 
     rounds++

@@ -103,6 +103,7 @@ async function processApiResponses() {
 async function renderGame () {
     await processApiResponses()
     loadingGif()
+    enableChoices()
     pointsAvailable = 1
     rightAnswer = false
     h1.innerText = "Guess the Artist"
@@ -242,6 +243,22 @@ async function renderGame () {
         } else {
             playerChoice.innerText = `Incorrect. The correct answer is ${randomArtistName}`;
         } 
+        pointsAvailable = 0
+        disableChoices()
+    }
+
+    function disableChoices() {
+        choiceA.disabled = true;
+        choiceB.disabled = true;
+        choiceC.disabled = true;
+        choiceD.disabled = true;
+    }
+    
+    function enableChoices() {
+        choiceA.disabled = false;
+        choiceB.disabled = false;
+        choiceC.disabled = false;
+        choiceD.disabled = false;
     }
 
     choiceA.addEventListener('click', () => {
@@ -269,6 +286,7 @@ async function renderGame () {
         choiceB.removeEventListener('click', choice2);
         choiceC.removeEventListener('click', choice3);
         choiceD.removeEventListener('click', choice4);
+        enableChoices()
     }
 
     rounds++

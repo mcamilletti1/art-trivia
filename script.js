@@ -163,6 +163,16 @@ async function renderGame () {
     // Remove duplicates
     let uniqueArtistNames = [...new Set(artistNames)];
 
+    const defaultArtistNames = ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet", "Salvador Dalí"];
+
+    // Use default names if there are not enough unique names
+    while (uniqueArtistNames.length < 4) {
+        let defaultName = defaultArtistNames.shift(); // Take the first name from the default list
+        if (!uniqueArtistNames.includes(defaultName)) {
+            uniqueArtistNames.push(defaultName);
+        }
+    }
+
     // Shuffle the unique artist names
     let shuffledArtistNames = shuffleArray(uniqueArtistNames);
 
@@ -186,31 +196,39 @@ async function renderGame () {
 
 
     function choice1 () {
+        rightAnswer = false;
         choiceA.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[0] === randomArtistName) {
             rightAnswer = true;
         }
+        checkAnswer()
     }
 
     function choice2 () {
+        rightAnswer = false;
         choiceB.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[1] === randomArtistName) {
             rightAnswer = true;
         } 
+        checkAnswer()
     }
 
     function choice3 () {
+        rightAnswer = false;
         choiceC.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[2] === randomArtistName) {
             rightAnswer = true;
         } 
+        checkAnswer()
     }
 
     function choice4 () {
+        rightAnswer = false;
         choiceD.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[3] === randomArtistName) {
             rightAnswer = true;
         } 
+        checkAnswer()
     }
 
     function checkAnswer () {
@@ -228,25 +246,21 @@ async function renderGame () {
 
     choiceA.addEventListener('click', () => {
         choice1()
-        checkAnswer()
         removeEventListeners()
     })
     
     choiceB.addEventListener('click', () => {
         choice2()
-        checkAnswer()
         removeEventListeners()
     })
 
     choiceC.addEventListener('click', () => {
         choice3()
-        checkAnswer()
         removeEventListeners()
     })
 
     choiceD.addEventListener('click', () => {
         choice4()
-        checkAnswer()
         removeEventListeners()
     })
 

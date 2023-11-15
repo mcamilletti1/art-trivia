@@ -97,7 +97,6 @@ async function processApiResponses() {
 //loads the gameplay page
 async function renderGame () {
     await processApiResponses()
-    loadingGif()
     pointsAvailable = 1
     rightAnswer = false
     h1.innerText = "Guess the Artist"

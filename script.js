@@ -18,6 +18,7 @@ const outerContent = document.getElementById("outerContent")
 const img = document.querySelector(".background")
 let points = 0
 let rounds = 0
+let rightAnswer = false
 let apiList = []
 let apiProcessed = false
 let individualArt
@@ -37,7 +38,7 @@ function shuffleArray(array) {
 
 //brings you to the score page
 function returnScore (num) {
-    let percentCorrect = (num/5)*100
+    let percentCorrect = (num/6)*100
     h1.innerText = "Great job!"
     h2.innerText = `You got ${num} points! You got ${percentCorrect}% correct!`
     choices.style.visibility = "hidden"
@@ -235,7 +236,7 @@ async function renderGame () {
 
     function checkAnswer () {
         playerChoice.style.opacity = "1"
-        if (rightAnswer === true) {
+        if (rightAnswer) {
             playerChoice.innerText = "That's correct!"
             if (pointsAvailable === 1) {
                 points += 1;

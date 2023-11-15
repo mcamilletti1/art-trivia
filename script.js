@@ -18,14 +18,12 @@ const outerContent = document.getElementById("outerContent")
 const img = document.querySelector(".background")
 let points = 0
 let rounds = 0
-let rightAnswer = false
 let apiList = []
 let apiProcessed = false
 let individualArt
 let individualArt1
 let individualArt2
 let individualArt3
-let pointsAvailable = 1
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -38,7 +36,7 @@ function shuffleArray(array) {
 
 //brings you to the score page
 function returnScore (num) {
-    let percentCorrect = (num/6)*100
+    let percentCorrect = (num/5)*100
     h1.innerText = "Great job!"
     h2.innerText = `You got ${num} points! You got ${percentCorrect}% correct!`
     choices.style.visibility = "hidden"
@@ -105,7 +103,6 @@ async function processApiResponses() {
 async function renderGame () {
     await processApiResponses()
     loadingGif()
-    enableChoices()
     pointsAvailable = 1
     rightAnswer = false
     h1.innerText = "Guess the Artist"
@@ -199,39 +196,31 @@ async function renderGame () {
 
 
     function choice1 () {
-        rightAnswer = false;
         choiceA.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[0] === randomArtistName) {
             rightAnswer = true;
         }
-        checkAnswer()
     }
 
     function choice2 () {
-        rightAnswer = false;
         choiceB.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[1] === randomArtistName) {
             rightAnswer = true;
         } 
-        checkAnswer()
     }
 
     function choice3 () {
-        rightAnswer = false;
         choiceC.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[2] === randomArtistName) {
             rightAnswer = true;
         } 
-        checkAnswer()
     }
 
     function choice4 () {
-        rightAnswer = false;
         choiceD.style.backgroundColor = "rgb(213, 248, 236)"
         if (shuffledArtistNames[3] === randomArtistName) {
             rightAnswer = true;
         } 
-        checkAnswer()
     }
 
     function checkAnswer () {
@@ -245,40 +234,29 @@ async function renderGame () {
         } else {
             playerChoice.innerText = `Incorrect. The correct answer is ${randomArtistName}`;
         } 
-        disableChoices()
-    }
-
-    function disableChoices() {
-        choiceA.disabled = true;
-        choiceB.disabled = true;
-        choiceC.disabled = true;
-        choiceD.disabled = true;
-    }
-    
-    function enableChoices() {
-        choiceA.disabled = false;
-        choiceB.disabled = false;
-        choiceC.disabled = false;
-        choiceD.disabled = false;
     }
 
     choiceA.addEventListener('click', () => {
         choice1()
+        checkAnswer()
         removeEventListeners()
     })
     
     choiceB.addEventListener('click', () => {
         choice2()
+        checkAnswer()
         removeEventListeners()
     })
 
     choiceC.addEventListener('click', () => {
         choice3()
+        checkAnswer()
         removeEventListeners()
     })
 
     choiceD.addEventListener('click', () => {
         choice4()
+        checkAnswer()
         removeEventListeners()
     })
 

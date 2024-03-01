@@ -237,7 +237,7 @@ function checkAnswer () {
     if (rightAnswer === true) {
         playerChoice.innerText = "That's correct!"
         if (pointsAvailable === 1) {
-            points += 1;
+            points++;
             console.log("adding one point");
             pointsAvailable = 0
         }
